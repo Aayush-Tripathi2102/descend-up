@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafafa;
+  --foreground: #171717;
+  --border: #e4e4e7;
+  --card: #ffffff;
+  --muted-foreground: #71717b;
+  --primary: #0055ff;
+  --muted: #f2f2f4;
+}
+
+html.dark {
+  --background: #111111;
+  --foreground: #ededed;
+  --border: #3f3f3f;
+  --card: #1d1d1d;
+  --muted-foreground: #71717b;
+  --primary: #4596FE; /* same in dark mode, change if needed */
+  --muted: #292929;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --font-sans: var(--font-inter);
+  --font-space: var(--font-space-grotesk);
+}
+
+button, select, input[type="checkbox"] { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+::selection { background: var(--primary); color: white; }
+
+/* Keep the original desktop shell; let the same navigation fit smaller screens. */
+@media (max-width: 767px) {
+  body > div.flex.min-h-screen { flex-direction: column; }
+  aside { width: 100%; border-right: 0; border-bottom: 1px solid var(--border); }
+  aside > div:first-child { padding: 12px 16px; }
+  aside > div:nth-child(2) { padding: 8px; }
+  aside nav { display: flex; gap: 4px; overflow-x: auto; }
+  aside nav a { flex-shrink: 0; padding: 10px; }
+  aside nav a span { white-space: nowrap; }
+  aside > div:last-child { display: none; }
+  main { padding: 16px !important; }
+  article.flex { align-items: flex-start; flex-direction: column; gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100%;
+}
